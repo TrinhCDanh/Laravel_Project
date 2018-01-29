@@ -22,7 +22,7 @@ class CateController extends Controller
     		$cate->keywords 		= $request->txtKeywords;
     		$cate->description 	= $request->txtDescription;
     		$cate->save();
-    		return redirect()->route('admin.cate.list');
+    		return redirect()->route('admin.cate.list')->with(['level_message'=>'success' ,'flash_message'=>'Success']);
     }
 
     public function getList() {

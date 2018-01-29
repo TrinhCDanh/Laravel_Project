@@ -130,11 +130,18 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h1 class="page-header">Category
-                            <small>Add</small>
+                        <h1 class="page-header">@yield('controller')
+                            <small>@yield('action')</small>
                         </h1>
                     </div>
                     <!-- /.col-lg-12 -->
+                    <div class="col-lg-12">
+                        @if (Session::has('flash_message'))
+                            <div class="alert alert-{!! Session::get('level_message') !!}">
+                                {!! Session::get('flash_message') !!}
+                            </div>
+                        @endif
+                    </div>
                     <!-- Day la noi chua noi dung chi tiet-->
                     @yield('content')
                     <!-- End noi chua noi dung chi tiet -->
@@ -165,13 +172,8 @@
     <script src="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js') }}"></script>
 
     <!-- Page-Level Demo Scripts - Tables - Use for reference -->
-    <script>
-    $(document).ready(function() {
-        $('#dataTables-example').DataTable({
-                responsive: true
-        });
-    });
-    </script>
+    <script src="{{ url('public/admin/js/myscript.js') }}"></script>
+    
 </body>
 
 </html>

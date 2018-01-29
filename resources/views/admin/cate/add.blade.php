@@ -1,4 +1,6 @@
 @extends('admin.master')
+@section('controller', 'Category')
+@section('action', 'Add')
 @section('content')
 <!-- /.col-lg-12 -->
 <div class="col-lg-7" style="padding-bottom:120px">
@@ -11,7 +13,7 @@
             </ul>
         </div>
     @endif
-    <form action="{!! route('admin.cate.getAdd') !!}" method="POST">
+    <form action="{!! route('admin.cate.postAdd') !!}" method="POST">
         <input type="hidden" name="_token" value="{!! csrf_token() !!}" >
         <div class="form-group">
             <label>Category Parent</label>
