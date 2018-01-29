@@ -27,7 +27,32 @@ class CateController extends Controller
     }
 
     public function getList() {
-    	$parent = Cate::select('id','name','parent_id')->orderBy('id','DESC')->get()->toArray();
-    	return view('admin.cate.list');
+    	$data = Cate::select('id','name','parent_id')->orderBy('id','DESC')->get()->toArray();
+    	return view('admin.cate.list', compact('data'));
+    }
+
+    public function getDelete($id) {
+    	$parent = Cate::where('parent_id', $id)->count();
+    	if ($parent == 0) {
+				$cate = Cate::find($id);
+	    	$cate->delete($id);
+	    	return redirect()->route('admin.cate.list')->with(['level_message'=>'success' ,'flash_message'=>'Delete Success']);
+    	} else {
+    		?>
+					<script type="text/javascript">
+						alert('Sorry! You can not delete this category');
+						window.location = "<?php echo route('admin.cate.list'); ?>";
+					</script>
+    		<?php
+    	}
+    	
+    }
+
+    public function getEdit() {
+
+    }
+
+    public function postEdit() {
+
     }
 }

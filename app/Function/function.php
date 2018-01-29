@@ -79,7 +79,7 @@ function stripUnicode($str){
 
 //Tạo menu đa cấp
 function cate_parent($data, $parent = 0, $str="--", $select = 0) {
-	foreach ($data as $key => $value) {
+	foreach ($data as $value) {
 		$id = $value["id"];
 		$name = $value["name"];
 		if ($value["parent_id"] == $parent) {
