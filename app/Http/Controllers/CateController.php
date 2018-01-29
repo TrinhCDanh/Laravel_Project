@@ -10,7 +10,8 @@ use App\Cate;
 class CateController extends Controller
 {
     public function getAdd() {
-    	return view('admin.cate.add');
+    	$parent = Cate::select('id','name','parent_id')->get()->toArray();
+    	return view('admin.cate.add', compact('parent'));
     }
 
     public function postAdd(CateRequest $request) {
@@ -18,7 +19,7 @@ class CateController extends Controller
     		$cate->name 				= $request->txtCateName;
     		$cate->alias 				= changeTitle($request->txtCateName);
     		$cate->order 				= $request->txtOrder;
-    		$cate->parent_id 		= 1;
+    		$cate->parent_id 		= $request->sltParent;
     		$cate->keywords 		= $request->txtKeywords;
     		$cate->description 	= $request->txtDescription;
     		$cate->save();
@@ -26,6 +27,7 @@ class CateController extends Controller
     }
 
     public function getList() {
+    	$parent = Cate::select('id','name','parent_id')->orderBy('id','DESC')->get()->toArray();
     	return view('admin.cate.list');
     }
 }
