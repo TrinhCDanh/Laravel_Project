@@ -48,11 +48,25 @@ class CateController extends Controller
     	
     }
 
-    public function getEdit() {
-
+    public function getEdit($id) {
+        $data = Cate::findOrFail($id)->toArray();
+        $parent = Cate::select('id','name','parent_id')->get()->toArray();
+        return view('admin.cate.edit', compact('data', 'id', 'parent'));
     }
 
-    public function postEdit() {
-
+    public function postEdit(Request $request, $id) {
+        $this->validate($request,
+            ["txtCateName" => "required"],
+            ["txtCateName.required" => "Ban chua nhap"]
+        );
+        $cate = Cate::find($id);
+        $cate->name         = $request->txtCateName;
+        $cate->alias        = changeTitle($request->txtCateName);
+        $cate->order        = $request->txtOrder;
+        $cate->parent_id    = $request->sltParent;
+        $cate->keywords     = $request->txtKeywords;
+        $cate->description  = $request->txtDescription;
+        $cate->save();
+        return redirect()->route('admin.cate.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Edit']);
     }
 }
