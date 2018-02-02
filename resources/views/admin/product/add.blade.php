@@ -4,7 +4,16 @@
 @section('content')
 <!-- /.col-lg-12 -->
 <div class="col-lg-7" style="padding-bottom:120px">
-    <form action="" method="POST">
+    @include('admin.blocks.error')
+    <form action="{!! url('admin/product/add') !!}" method="POST">
+        <input type="hidden" name="_token" value="{!! csrf_token() !!}" >
+        <div class="form-group">
+            <label>Category Parent</label>
+            <select class="form-control" name="sltParent">
+                <option value="0">Please Choose Category</option>
+                <?php cate_parent($cate); ?>
+            </select>
+        </div>
         <div class="form-group">
             <label>Name</label>
             <input class="form-control" name="txtName" placeholder="Please Enter Username" />
