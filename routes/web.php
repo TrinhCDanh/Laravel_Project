@@ -27,5 +27,6 @@ Route::group(['prefix'=>'admin'], function() {
 		Route::get('list', ['as'=>'admin.product.list', 'uses'=>'ProductController@getList']);
 		Route::get('add', ['as'=>'admin.cate.getAdd', 'uses'=>'ProductController@getAdd']);
 		Route::post('add', ['as'=>'admin.cate.postAdd', 'uses'=>'ProductController@postAdd']);
+		Route::get('delete/{id}', ['as'=>'admin.product.getDelete', 'uses'=>'ProductController@getDelete']);
 	});
 });

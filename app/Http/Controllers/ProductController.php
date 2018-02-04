@@ -9,11 +9,13 @@ use App\ProductImages;
 
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Input;
+use File;
 
 class ProductController extends Controller
 {
 		public function getList() {
-			return view('admin.product.list');
+			$data = Product::select('id', 'name', 'price', 'cate_id', 'created_at')->orderBy('id', 'DESC')->get()->toArray();
+			return view('admin.product.list', compact('data'));
 		}
 
     public function getAdd() {
@@ -49,7 +51,20 @@ class ProductController extends Controller
     				$product_img->save();
     			}
     		}
-    	}  
+    	}
+    	return redirect()->route('admin.product.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Add Product']);  
+    }
 
+    public function getDelete($id) {
+    	//echo $id;
+    	$product_detail = Product::find($id)->pimages->toArray();
+    	//print_r($product_detail);
+    	foreach ($product_detail as $value) {
+    		File::delete('resources/uploads/detail/'.$value["image"]);
+    	}
+    	$product = Product::find($id);
+    	File::delete('resources/uploads/'.$product->image);
+    	$product->delete($id);
+    	return redirect()->route('admin.product.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Delete Product']); 
     }
 }
