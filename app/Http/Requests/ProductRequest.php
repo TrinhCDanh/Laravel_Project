@@ -26,7 +26,7 @@ class ProductRequest extends FormRequest
         return [
             'sltParent' => 'required',
             'txtName' => 'required|unique:products,name',
-            'fImages' => 'required'
+            'fImages' => 'required|image'
         ];
     }
 
@@ -35,7 +35,8 @@ class ProductRequest extends FormRequest
             'sltParent.required' => 'Please choose category',
             'txtName.required' => 'Please enter name product',
             'txtName.unique' => 'Product name is exitst',
-            'fImages.required' => 'Please choose Images'
+            'fImages.required' => 'Please choose Images',
+            'fImages.image' => 'This file is not Image'
         ];
     }
 }
