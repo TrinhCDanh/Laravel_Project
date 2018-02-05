@@ -3,7 +3,7 @@
 @section('action', 'Edit')
 @section('content')
 <!-- /.col-lg-12 -->
-<form action="" method="POST" enctype="multipart/form-data">
+<form action="" method="POST" enctype="multipart/form-data" name="frmEditProduct">
 <div class="col-lg-7" style="padding-bottom:120px">
     
         @include('admin.blocks.error')
@@ -58,8 +58,8 @@
 <div class="col-md-4">
     @foreach($product_img as $key=>$item)
         <div class="form-group img_box" id="{!! $key !!}">
-            <img src="{!! asset('resources/uploads/detail/'.$item['image']) !!}" class="img_current" id="{!! $key !!}">
-            <a id="del-img_demo" class="btn-danger icon-del" href="">Delete</i></a>
+            <img src="{!! asset('resources/uploads/detail/'.$item['image']) !!}" class="img_current" idHinh="hinh{!! $item['id'] !!}" id="{!! $key !!}">
+            <a type="button" id="del-img_demo" class="btn-danger icon-del" href="javascript:void(0)">Delete</i></a>
             <input type="file" name="fProductDetail[]">
         </div>
     @endforeach

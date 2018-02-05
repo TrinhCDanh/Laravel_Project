@@ -78,4 +78,19 @@ class ProductController extends Controller
     public function postEdit() {
 
     }
+
+    public function getDelImg($id) {
+    	if(Request::ajax()) {
+    		$idHinh       = (int)Request::get('idHinh'); //dung ajax de lay id hinh
+    		$image_detail = ProductImages::find($idHinh);
+    		if(!empty($image_detail)) {
+    			$img = 'resources/uploads/detail/'.$image_detail->image;
+    			if(File::exists($img)) {
+    				File::delete($img);
+    			}
+    			$image_detail->delete();
+    		}
+    		return "Oke";
+    	}
+    }
 }
