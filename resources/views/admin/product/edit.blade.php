@@ -57,10 +57,14 @@
 <div class="col-md-1"></div>
 <div class="col-md-4">
     @foreach($product_img as $key=>$item)
-        <div class="form-group" id="{!! $key !!}">
+        <div class="form-group img_box" id="{!! $key !!}">
             <img src="{!! asset('resources/uploads/detail/'.$item['image']) !!}" class="img_current" id="{!! $key !!}">
-        </div>    
+            <a id="del-img_demo" class="btn-danger icon-del" href="">Delete</i></a>
+            <input type="file" name="fProductDetail[]">
+        </div>
     @endforeach
+    <button type="button" class="btn btn-primary" id="addImages">Add Images</button> 
+    <div id="insert_image"></div> 
 </div> 
 <form>
 @endsection()

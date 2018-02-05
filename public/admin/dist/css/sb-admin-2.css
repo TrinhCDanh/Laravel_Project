@@ -356,3 +356,13 @@ table.dataTable thead .sorting:after {
 .img_current {
     width: 100%;
 }
+.img_box {
+    position: relative;
+}
+.icon-del {
+    text-decoration: underline;
+    padding: 5px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+}
