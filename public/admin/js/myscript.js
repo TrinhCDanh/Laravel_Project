@@ -19,6 +19,7 @@ $(document).ready(function() {
 	});
 });
 
+//AJAX
 $(document).ready(function() {
 	$("a#del-img_demo").on('click', function() {
 		var url = "http://localhost/framework/laravel/Laravel_Project/admin/product/delimg/";
@@ -28,11 +29,11 @@ $(document).ready(function() {
 		var rid = $(this).parent().find("img").attr("id");
 		$.ajax({
 			url: url + idHinh,
-			type: 'POST',
+			type: 'GET',
 			cache: false,
-			date: {"_token":_token, "idHinh":idHinh, "urlHinh":img},
+			data: {"_token":_token, "idHinh":idHinh, "urlHinh":img},
 			success: function(data) {
-				if(daata == "Oke")
+				if(data == "Oke")
 					$("#"+rid).remove();
 				else
 					alert("Error!!");

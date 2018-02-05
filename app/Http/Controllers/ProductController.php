@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Cate;
 use App\Product;
 use App\ProductImages;
@@ -10,6 +10,7 @@ use App\ProductImages;
 use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Input;
 use File;
+use Request;
 
 class ProductController extends Controller
 {

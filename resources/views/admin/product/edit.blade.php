@@ -58,9 +58,8 @@
 <div class="col-md-4">
     @foreach($product_img as $key=>$item)
         <div class="form-group img_box" id="{!! $key !!}">
-            <img src="{!! asset('resources/uploads/detail/'.$item['image']) !!}" class="img_current" idHinh="hinh{!! $item['id'] !!}" id="{!! $key !!}">
+            <img src="{!! asset('resources/uploads/detail/'.$item['image']) !!}" class="img_current" idHinh="{!! $item['id'] !!}" id="{!! $key !!}">
             <a type="button" id="del-img_demo" class="btn-danger icon-del" href="javascript:void(0)">Delete</i></a>
-            <input type="file" name="fProductDetail[]">
         </div>
     @endforeach
     <button type="button" class="btn btn-primary" id="addImages">Add Images</button> 
