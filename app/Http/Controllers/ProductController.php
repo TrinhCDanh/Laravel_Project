@@ -78,6 +78,7 @@ class ProductController extends Controller
 
     public function postEdit($id, Request $request) {
     	$product = Product::find($id);
+
     	$product->name 				= Request::input('txtName');
     	$product->alias 			= changeTitle(Request::input('txtName'));
     	$product->price 			= Request::input('txtPrice');
@@ -99,9 +100,24 @@ class ProductController extends Controller
     		echo "Khong co hinh";
     	}
     	$product->save();
+
+    	//Cap nhat lai detail cua san pham
+    	if(!empty(Request::file('fEditDetail'))) {
+    		foreach(Request::file('fEditDetail') as $file) {
+    			$product_img = new ProductImages;
+    			if(isset($file)) {
+    				$product_img->image = $file->getClientOriginalName();
+    				$product_img->product_id = $product->id;
+    				$file->move('resources/uploads/detail/',$file->getClientOriginalName());
+    				$product_img->save();
+    			}
+    		}
+    	}
+    	
     	return redirect()->route('admin.product.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Edit Product']);  
     }
 
+    //Xoa detail cua san pham
     public function getDelImg($id) {
     	if(Request::ajax()) {
     		$idHinh       = (int)Request::get('idHinh'); //dung ajax de lay id hinh
