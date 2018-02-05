@@ -76,8 +76,30 @@ class ProductController extends Controller
    		return view('admin.product.edit', compact('cate', 'product', 'product_img'));
     }
 
-    public function postEdit() {
-
+    public function postEdit($id, Request $request) {
+    	$product = Product::find($id);
+    	$product->name 				= Request::input('txtName');
+    	$product->alias 			= changeTitle(Request::input('txtName'));
+    	$product->price 			= Request::input('txtPrice');
+    	$product->intro 			= Request::input('txtIntro');
+    	$product->content 		= Request::input('txtContent');
+    	$product->keywords 		= Request::input('txtKeywords');
+    	$product->description = Request::input('txtDescription');
+    	$product->user_id 		= 1;
+    	$product->cate_id 		= Request::input('sltParent');
+    	//Cap nhat file hinh
+    	$img_current = "resources/uploads/".$product->image;
+    	if (!empty(Request::file('fImages'))) {
+    		$file_name = Request::file('fImages')->getClientOriginalName();
+    		$product->image = $file_name;
+    		Request::file('fImages')->move('resources/uploads/', $file_name);
+    		if (File::exists($img_current))
+    			File::delete($img_current);
+    	} else {
+    		echo "Khong co hinh";
+    	}
+    	$product->save();
+    	return redirect()->route('admin.product.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Edit Product']);  
     }
 
     public function getDelImg($id) {

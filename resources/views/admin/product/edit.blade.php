@@ -44,11 +44,11 @@
         </div>
         <div class="form-group">
             <label>Product Keywords</label>
-            <input class="form-control" name="txtOrder" placeholder="Please Enter Category Keywords" value="{!! old('txtKeywords', isset($product) ? $product['keywords'] : null) !!}" />
+            <input class="form-control" name="txtKeywords" placeholder="Please Enter Category Keywords" value="{!! old('txtKeywords', isset($product) ? $product['keywords'] : null) !!}" />
         </div>
         <div class="form-group">
             <label>Product Description</label>
-            <textarea class="form-control" rows="3">{!! old('txtDescription', isset($product) ? $product['description'] : null) !!}</textarea>
+            <textarea class="form-control" rows="3" name="txtDescription">{!! old('txtDescription', isset($product) ? $product['description'] : null) !!}</textarea>
         </div>
         <button type="submit" class="btn btn-default">Product Edit</button>
         <button type="reset" class="btn btn-default">Reset</button>
