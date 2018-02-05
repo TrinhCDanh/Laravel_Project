@@ -32,7 +32,7 @@
                 ?>
             </td>
             <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a onclick="return xacnhanxoa('Are you sure')" href="{!! URL::route('admin.product.getDelete', $item['id']) !!}"> Delete</a></td>
-            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.product.getDelete', $item['id']) !!}">Edit</a></td>
+            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.product.getEdit', $item['id']) !!}">Edit</a></td>
         </tr>
         <?php $i++ ?>
         @endforeach

@@ -41,7 +41,7 @@ class ProductController extends Controller
     	$request->file('fImages')->move('resources/uploads/', $file_name);
     	$product->save();
     	$product_id = $product->id;
-    	if ($request->hasFile('fProductDetail')) {
+    	if ($request->hasFile('fProductDetail')) {//Kiem tra file ton tai 
     		foreach ($request->file('fProductDetail') as $file) {
     			$product_img = new ProductImages;
     			if(isset($file)) {
@@ -66,5 +66,16 @@ class ProductController extends Controller
     	File::delete('resources/uploads/'.$product->image);
     	$product->delete($id);
     	return redirect()->route('admin.product.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Delete Product']); 
+    }
+
+    public function getEdit($id) {
+    	$cate = Cate::select('id', 'name', 'parent_id')->get()->toArray();
+   		$product = Product::find($id);
+   		$product_img = Product::find($id)->pimages;
+   		return view('admin.product.edit', compact('cate', 'product', 'product_img'));
+    }
+
+    public function postEdit() {
+
     }
 }
