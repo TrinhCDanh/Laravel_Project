@@ -33,4 +33,12 @@ Route::group(['prefix'=>'admin'], function() {
 		//Delete image detail
 		Route::get('delimg/{id}', ['as'=>'admin.product.getDelImg', 'uses'=>'ProductController@getDelImg']);
 	});
+	Route::group(['prefix'=>'user'], function() {
+		Route::get('list', ['as'=>'admin.user.list', 'uses'=>'UserController@getList']);
+		Route::get('add', ['as'=>'admin.user.getAdd', 'uses'=>'UserController@getAdd']);
+		Route::post('add', ['as'=>'admin.user.postAdd', 'uses'=>'UserController@postAdd']);
+		Route::get('delete/{id}', ['as'=>'admin.user.getDelete', 'uses'=>'UserController@getDelete']);
+		Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
+		Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
+	});
 });
