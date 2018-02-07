@@ -41,4 +41,14 @@ Route::group(['prefix'=>'admin'], function() {
 		Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
 		Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
 	});
+	
+});
+
+//Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['prefix'=>'auth'], function() {
+	Route::get('login', ['as' => 'auth.login.getLogin', 'uses' => 'Auth\LoginController@getLogin']);
+	Route::post('login', ['as' => 'auth.login.postLogin', 'uses' => 'Auth\LoginController@postLogin']);
 });
