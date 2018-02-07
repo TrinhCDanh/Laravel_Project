@@ -11,6 +11,7 @@ use App\Http\Requests\ProductRequest;
 use Illuminate\Support\Facades\Input;
 use File;
 use Request;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -36,7 +37,7 @@ class ProductController extends Controller
     	$product->image = $file_name;
     	$product->keywords = $request->txtKeywords;
     	$product->description = $request->txtDescription;
-    	$product->user_id = 1;
+    	$product->user_id = Auth::user()->id;
     	$product->cate_id = $request->sltParent;
 
     	$request->file('fImages')->move('resources/uploads/', $file_name);

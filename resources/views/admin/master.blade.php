@@ -18,7 +18,7 @@
     <link href="{{ url('public/admin/dist/css/sb-admin-2.css') }}" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="{{ url('public/admin/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet') }}" type="text/css">
+    <link href="{{ url('public/admin/bower_components/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" type="text/css">
 
     <!-- DataTables CSS -->
     <link href="{{ url('public/admin/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css') }}" rel="stylesheet">
@@ -61,12 +61,16 @@
                         <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        <li><a href="#"><i class="fa fa-user fa-fw"></i>
+                            @if(Auth::check())
+                                {!! Auth::user()->username !!}
+                            @endif
+                            </a>
                         </li>
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

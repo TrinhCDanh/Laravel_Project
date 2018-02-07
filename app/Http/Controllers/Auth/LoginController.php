@@ -28,7 +28,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/admin/product/list';
+    //protected $redirectAfterLogout = '/';
 
     /**
      * Create a new controller instance.
@@ -40,8 +41,24 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function getLogin() {
-        return view('admin.login');
+    public function username()
+    {
+        return 'username';
+    }
+
+    /*public function login($request) {
+        if (Auth::attempt(['email' => email, 'password' => password, 'level' => 1])) {
+            return redirect()->route('admin.cate.getAdd');
+        } else {
+            return redirect()->back();
+        }
+    }*/
+
+    /*public function getLogin() {
+        if (isset(\Auth::user()->username))
+            return redirect()->route('admin.cate.getAdd');
+        else
+            return view('admin.login');
     }
 
     public function postLogin(LoginRequest $request) {
@@ -51,9 +68,9 @@ class LoginController extends Controller
             'level' => 1
         );
         if (\Auth::attempt($login)) {
-            return redirect()->route('admin.cate.list');
+            return redirect()->route('admin.cate.getAdd');
         } else {
             return redirect()->back();
         }
-    }
+    }*/
 }
