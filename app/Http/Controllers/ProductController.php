@@ -14,10 +14,10 @@ use Request;
 
 class ProductController extends Controller
 {
-		public function getList() {
-			$data = Product::select('id', 'name', 'price', 'cate_id', 'created_at')->orderBy('id', 'DESC')->get()->toArray();
-			return view('admin.product.list', compact('data'));
-		}
+	public function getList() {
+		$data = Product::select('id', 'name', 'price', 'cate_id', 'created_at')->orderBy('id', 'DESC')->get()->toArray();
+		return view('admin.product.list', compact('data'));
+	}
 
     public function getAdd() {
     	$cate = Cate::select('id','name','parent_id')->get()->toArray();
