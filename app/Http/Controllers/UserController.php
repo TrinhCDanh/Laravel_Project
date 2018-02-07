@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Hash;
+use Auth;
+
 class UserController extends Controller
 {
     public function getList() {
@@ -29,7 +31,14 @@ class UserController extends Controller
     }
 
     public function getDelete($id) {
-    	
+    	$user_current_login = Auth::user()->id;
+    	$user = User::find($id);
+    	if (($id == 2) || ($user_current_login != 2 && $user["level"] == 1))
+    		return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You cant not delete']);
+    	else {
+    		$user->delete();
+    		return redirect()->route('admin.user.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Delete User']);
+    	}
     }
 
     public function getEdit($id) {
