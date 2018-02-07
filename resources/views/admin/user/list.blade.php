@@ -9,36 +9,30 @@
             <th>ID</th>
             <th>Username</th>
             <th>Level</th>
-            <th>Status</th>
             <th>Delete</th>
             <th>Edit</th>
         </tr>
     </thead>
     <tbody>
+        <?php $i = 1; ?>
+        @foreach($user as $item_user)
         <tr class="odd gradeX" align="center">
-            <td>1</td>
-            <td>quoctuan</td>
-            <td>Superadmin</td>
-            <td>Hiện</td>
-            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
+            <td>{!! $i !!}</td>
+            <td>{!! $item_user['username'] !!}</td>
+            <td>
+                @if($item_user['id'] == 2)
+                    SuperAdmin
+                @elseif($item_user['level'] == 1)
+                    Admin
+                @else
+                    Member
+                @endif
+            </td>
+            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="{!! URL::route('admin.user.getDelete', $item_user['id']) !!}"> Delete</a></td>
+            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="{!! URL::route('admin.user.getEdit', $item_user['id']) !!}">Edit</a></td>
         </tr>
-        <tr class="even gradeC" align="center">
-            <td>2</td>
-            <td>kutun</td>
-            <td>Admin</td>
-            <td>Ẩn</td>
-            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-        </tr>
-        <tr class="odd gradeX" align="center">
-            <td>3</td>
-            <td>kuteo</td>
-            <td>Member</td>
-            <td>Hiện</td>
-            <td class="center"><i class="fa fa-trash-o  fa-fw"></i><a href="#"> Delete</a></td>
-            <td class="center"><i class="fa fa-pencil fa-fw"></i> <a href="#">Edit</a></td>
-        </tr>
+        <?php $i++; ?>
+        @endforeach
     </tbody>
 </table>
 @endsection()

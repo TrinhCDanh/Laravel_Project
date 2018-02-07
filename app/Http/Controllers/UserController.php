@@ -9,7 +9,8 @@ use Hash;
 class UserController extends Controller
 {
     public function getList() {
-    	return view('admin.user.list');
+    	$user = User::select('id', 'username', 'level')->orderBy('id', 'DESC')->get()->toArray();
+    	return view('admin.user.list', compact('user'));
     }
 
     public function getAdd() {
