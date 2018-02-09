@@ -70,7 +70,12 @@
                         <li><a href="#"><i class="fa fa-gear fa-fw"></i> Settings</a>
                         </li>
                         <li class="divider"></li>
-                        <li><a href="#"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        <li><a href="http://localhost/framework/laravel/Laravel_Project/logout"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <form id="logout-form" action="http://localhost/framework/laravel/Laravel_Project/logout" method="POST" style="display: none;">
+                                            <input type="hidden" name="_token" value="{!! csrf_token() !!}">
+                                        </form>
                         </li>
                     </ul>
                     <!-- /.dropdown-user -->

@@ -42,10 +42,30 @@ class UserController extends Controller
     }
 
     public function getEdit($id) {
-    	return view('admin.user.edit');
+    	$data = User::find($id);
+    	if (Auth::user()->id != 2 && ($id == 2 || ($data["level"] == 1 && (Auth::user()->id != $id))))
+    		return redirect()->route('admin.user.list')->with(['level_message'=>'danger' ,'flash_message'=>'You cant not edit']);
+    	return view('admin.user.edit', compact('data', 'id'));
     }
 
-    public function postEdit($id, UserRequest $request) {
-    	
+    public function postEdit($id, Request $request) {
+    	$user = User::find($id);
+    	if ($request->input('txtPass')) {
+    		$this->validate($request, 
+    		[
+    			"txtRePass" => "same:txtPass"
+    		],
+    		[
+    			"txtRePass.same" => "Two Password dont match"
+    		]);
+    		$pass = $request->input('txtPass');
+    		$user->password = Hash::make($pass);
+    	}
+    	$user->email = $request->txtEmail;
+    	$user->level = $request->rdoLevel;
+    	$user->remember_token = $request->_token;
+    	$user->save();
+    	return redirect()->route('admin.user.list')->with(['level_message'=>'success' ,'flash_message'=>'Success Edit User']);
+
     }
 }
