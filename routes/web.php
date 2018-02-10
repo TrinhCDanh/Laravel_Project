@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('user.pages.home');
 });
 
 Auth::routes();
@@ -57,6 +57,8 @@ Route::group(['middleware' => 'web'], function() {
 	Route::post('login', ['as' => 'auth.login.postLogin', 'uses' => 'Auth\LoginController@postLogin']);
 });*/
 
-Route::get('test', function() {
- return view('user.pages.home');
+Route::get('loai-san-pham/{id}/{tenloai}', function() {
+ return view('user.pages.cate');
 });
+
+//Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'HomeController@loaisanpham']);
