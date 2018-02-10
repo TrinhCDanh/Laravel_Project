@@ -56,3 +56,7 @@ Route::group(['middleware' => 'web'], function() {
 	Route::get('login', ['as' => 'auth.login.getLogin', 'uses' => 'Auth\LoginController@getLogin']);
 	Route::post('login', ['as' => 'auth.login.postLogin', 'uses' => 'Auth\LoginController@postLogin']);
 });*/
+
+Route::get('test', function() {
+ return view('user.master');
+});
