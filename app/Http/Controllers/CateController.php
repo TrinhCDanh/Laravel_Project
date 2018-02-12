@@ -16,11 +16,11 @@ class CateController extends Controller
 
     public function postAdd(CateRequest $request) {
     		$cate = new Cate;
-    		$cate->name 				= $request->txtCateName;
-    		$cate->alias 				= changeTitle($request->txtCateName);
-    		$cate->order 				= $request->txtOrder;
-    		$cate->parent_id 		= $request->sltParent;
-    		$cate->keywords 		= $request->txtKeywords;
+    		$cate->name 		= $request->txtCateName;
+    		$cate->alias 		= changeTitle($request->txtCateName);
+    		$cate->order 		= $request->txtOrder;
+    		$cate->parent_id    = $request->sltParent;
+    		$cate->keywords     = $request->txtKeywords;
     		$cate->description 	= $request->txtDescription;
     		$cate->save();
     		return redirect()->route('admin.cate.list')->with(['level_message'=>'success' ,'flash_message'=>'Success']);

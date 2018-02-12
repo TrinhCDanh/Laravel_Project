@@ -19,55 +19,12 @@
           <div class="sidewidt">
             <h2 class="heading2"><span>Categories</span></h2>
             <ul class="nav nav-list categories">
-              <li>
-                <a href="category.html">Men Accessories</a>
-                <ul>
-                 <li>
-                <a href="category.html">Women Accessories</a>
-                
-              </li>
-              <li>
-                <a href="category.html">Computers </a>
-              </li>
-              <li>
-                <a href="category.html">Home and Furniture</a>
-              </li>
-                </ul>
-              </li>
-              <li>
-                <a href="category.html">Women Accessories</a>
-                <ul>
-                 <li>
-                <a href="category.html">Women Accessories</a>
-              </li>
-              <li>
-                <a href="category.html">Computers </a>
-              </li>
-              <li>
-                <a href="category.html">Home and Furniture</a>
-              </li>
-                </ul>
-              </li>
-              <li>
-                <a href="category.html">Computers </a>
-                <ul>
-                 <li>
-                <a href="category.html">Women Accessories</a>
-              </li>
-              <li>
-                <a href="category.html">Computers </a>
-              </li>
-              <li>
-                <a href="category.html">Home and Furniture</a>
-              </li>
-                </ul>
-              </li>
-              <li>
-                <a href="category.html">Home and Furniture</a>
-              </li>
-              <li>
-                <a href="category.html">Others</a>
-              </li>
+              @foreach($menu_cate as $item_menu)
+                <li>
+                  <a href="{{ URL('loai-san-pham', [$item_menu->id, $item_menu->alias]) }}">{{$item_menu->name}}</a>
+                </li>
+              @endforeach
+              
             </ul>
           </div>
          <!--  Best Seller -->  
@@ -98,24 +55,14 @@
           <div class="sidewidt">
             <h2 class="heading2"><span>Latest Products</span></h2>
             <ul class="bestseller">
+              @foreach($lasted_product as $item_lasted)
               <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Women Accessories</span>
-                <span class="price">$250</span>
+                <img width="50" height="50" src="{!! asset('resources/uploads/'.$item_lasted->image) !!}" alt="product" title="product">
+                <a class="productname" href="product.html">{!! $item_lasted->name !!}</a>
+                <span class="procategory">{{ $name_cate->name }}</span>
+                <span class="price">{!! $item_lasted->price !!}</span>
               </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
+              @endforeach
             </ul>
           </div>
           <!--  Must have -->  
@@ -168,11 +115,12 @@
                <!-- Category-->
                 <section id="categorygrid">
                   <ul class="thumbnails grid">
+                    @foreach($product_cate as $item)
                     <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
+                      <a class="prdocutname" href="product.html">{!! $item->name !!}</a>
                       <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
+                        <a href="#"><img alt="" src="{!! asset('resources/uploads/'.$item->image) !!}"></a>
                         <div class="shortlinks">
                           <a class="details" href="#">DETAILS</a>
                           <a class="wishlist" href="#">WISHLIST</a>
@@ -181,162 +129,13 @@
                         <div class="pricetag">
                           <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
                           <div class="price">
-                            <div class="pricenew">$4459.00</div>
+                            <div class="pricenew">{{ number_format($item->price,0,",",".") }}</div>
                             <div class="priceold">$5000.00</div>
                           </div>
                         </div>
                       </div>
                     </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <span class="offer tooltip-test" >Offer</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <a href="#"><img alt="" src="img/product2.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <span class="offer tooltip-test" >Offer</span>
-                        <a href="#"><img alt="" src="img/product1.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">Product Name Here</a>
-                      <div class="thumbnail">
-                        <a href="#"><img alt="" src="img/product2.jpg"></a>
-                        <div class="shortlinks">
-                          <a class="details" href="#">DETAILS</a>
-                          <a class="wishlist" href="#">WISHLIST</a>
-                          <a class="compare" href="#">COMPARE</a>
-                        </div>
-                        <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                          <div class="price">
-                            <div class="pricenew">$4459.00</div>
-                            <div class="priceold">$5000.00</div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    @endforeach
                   </ul>
                   <ul class="thumbnails list row">
                     <li>

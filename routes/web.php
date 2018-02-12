@@ -12,7 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('user.pages.home');
+	$product = DB::table('products')->select('id', 'name', 'image', 'price', 'alias')->orderBy('id', 'DESC')->skip(0)->take(4)->get();
+    return view('user.pages.home', compact('product'));
 });
 
 Auth::routes();
@@ -31,8 +32,8 @@ Route::group(['middleware' => 'web'], function() {
 		});
 		Route::group(['prefix'=>'product'], function() {
 			Route::get('list', ['as'=>'admin.product.list', 'uses'=>'ProductController@getList']);
-			Route::get('add', ['as'=>'admin.cate.getAdd', 'uses'=>'ProductController@getAdd']);
-			Route::post('add', ['as'=>'admin.cate.postAdd', 'uses'=>'ProductController@postAdd']);
+			Route::get('add', ['as'=>'admin.product.getAdd', 'uses'=>'ProductController@getAdd']);
+			Route::post('add', ['as'=>'admin.product.postAdd', 'uses'=>'ProductController@postAdd']);
 			Route::get('delete/{id}', ['as'=>'admin.product.getDelete', 'uses'=>'ProductController@getDelete']);
 			Route::get('edit/{id}', ['as'=>'admin.product.getEdit', 'uses'=>'ProductController@getEdit']);
 			Route::post('edit/{id}', ['as'=>'admin.product.postEdit', 'uses'=>'ProductController@postEdit']);
@@ -57,8 +58,8 @@ Route::group(['middleware' => 'web'], function() {
 	Route::post('login', ['as' => 'auth.login.postLogin', 'uses' => 'Auth\LoginController@postLogin']);
 });*/
 
-Route::get('loai-san-pham/{id}/{tenloai}', function() {
- return view('user.pages.cate');
-});
+Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'ShowController@loaisanpham']);
+Route::get('chi-tiet-san-pham/{id}/{tensanpham}', ['as'=>'chitietsanpham', 'uses'=>'ShowController@chitietsanpham']);
+
 
 //Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'HomeController@loaisanpham']);
