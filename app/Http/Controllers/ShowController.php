@@ -15,4 +15,11 @@ class ShowController extends Controller
     	$lasted_product = DB::table('products')->select('id', 'name', 'image', 'price', 'alias')->orderBy('id', 'DESC')->skip(0)->take(4)->get();
     	return view('user.pages.cate', compact('product_cate', 'menu_cate', 'lasted_product', 'name_cate'));
     }
+    public function chitietsanpham($id) {
+    	$product_detail = DB::table('products')->where('id', $id)->first();
+    	$image = DB::table('product_images')->select('id', 'image')->where('product_id', $id)->get();
+    	// san pham cung loai
+    	$product_cate = DB::table('products')->where('cate_id',$product_detail->cate_id)->where('id', '<>', $id)->take(4)->get();
+    	return view('user.pages.product', compact('product_detail', 'image', 'product_cate'));
+    }
 }

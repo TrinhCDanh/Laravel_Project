@@ -117,7 +117,7 @@
                   <ul class="thumbnails grid">
                     @foreach($product_cate as $item)
                     <li class="col-lg-4 col-sm-6">
-                      <a class="prdocutname" href="product.html">{!! $item->name !!}</a>
+                      <a class="prdocutname" href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}">{!! $item->name !!}</a>
                       <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
                         <a href="#"><img alt="" src="{!! asset('resources/uploads/'.$item->image) !!}"></a>
