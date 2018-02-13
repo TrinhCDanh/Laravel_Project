@@ -228,19 +228,21 @@
                   </ul>
                   <div>
                     <ul class="pagination pull-right">
-                      <li><a href="#">Prev</a>
-                      </li>
-                      <li class="active">
-                        <a href="#">1</a>
-                      </li>
-                      <li><a href="#">2</a>
-                      </li>
-                      <li><a href="#">3</a>
-                      </li>
-                      <li><a href="#">4</a>
-                      </li>
-                      <li><a href="#">Next</a>
-                      </li>
+                      @if($product_cate->currentPage() != 1)
+                        <li>
+                          <a href="{!! str_replace('/?', '?', ($product_cate->currentPage() - 1 )) !!}">Prev</a>
+                        </li>
+                      @endif
+                      @for ($i = 1; $i <= $product_cate->lastPage(); $i++)
+                        <li class="{!! ($product_cate->currentPage() == $i) ? 'active' : ''  !!}">
+                          <a href="{!! str_replace('/?', '?', ($product_cate->url($i))) !!}">{!! $i !!}</a>
+                        </li>
+                      @endfor
+                      @if($product_cate->currentPage() != $product_cate->lastPage())
+                        <li>
+                          <a href="{!! str_replace('/?', '?', ($product_cate->currentPage() + 1 )) !!}">Next</a>
+                        </li>
+                      @endif
                     </ul>
                   </div>
                 </section>
