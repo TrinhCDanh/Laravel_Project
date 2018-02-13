@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use Mail;
 
 class ShowController extends Controller
 {
@@ -21,5 +22,15 @@ class ShowController extends Controller
     	// san pham cung loai
     	$product_cate = DB::table('products')->where('cate_id',$product_detail->cate_id)->where('id', '<>', $id)->take(4)->get();
     	return view('user.pages.product', compact('product_detail', 'image', 'product_cate'));
+    }
+    public function getLienhe() {
+        return view('user.pages.contact');
+    }
+    public function postLienhe() {
+        $data = ['hoten'=>'Trinh Danh'];
+        Mail::send('email.blanks', $data, function($msg) {
+            $msg->from('whatthemail2@gmail.com', 'Trinh Danh');
+            $msg->to('whatthemail2@gmail.com', 'What The')->subject('Hello World!');
+        });
     }
 }
