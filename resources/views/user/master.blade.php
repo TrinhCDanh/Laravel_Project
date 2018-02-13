@@ -89,5 +89,6 @@
 <script type="text/javascript"  src="{!! url('public/user/js/jquery.ba-throttle-debounce.min.js') !!}"></script> 
 <script src="{!! url('public/user/js/jquery.isotope.min.js') !!}"></script> 
 <script defer src="{!! url('public/user/js/custom.js') !!}"></script>
+<script type="text/javascript" src="{!! url('public/user/js/myscript.js') !!}")></script>
 </body>
 </html>
