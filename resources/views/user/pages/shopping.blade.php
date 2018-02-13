@@ -94,7 +94,7 @@
               </tr>
             </table>
             <input type="submit" value="CheckOut" class="btn btn-orange pull-right">
-            <input type="submit" value="Continue Shopping" class="btn btn-orange pull-right mr10">
+            <a href="{!! url('/') !!}" type="submit" class="btn btn-orange pull-right mr10">Continue Shopping</a>
           </div>
         </div>
         </div>

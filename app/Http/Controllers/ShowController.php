@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use DB, Mail, Cart;
+//use Illuminate\Http\Request;
+use DB, Mail, Cart, Request;
 
 class ShowController extends Controller
 {
@@ -45,5 +45,13 @@ class ShowController extends Controller
     public function xoasanpham($id) {
         Cart::remove($id);
         return redirect()->route('giohang');
+    }
+    public function capnhat() {
+        if (Request::ajax()) {
+            $id = Request::get('id');
+            $qty = Request::get('qty');
+            Cart::update($id, $qty);
+            echo "oke";
+        }
     }
 }

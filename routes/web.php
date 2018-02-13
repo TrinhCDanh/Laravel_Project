@@ -68,4 +68,5 @@ Route::post('lien-he', ['as'=>'postLienhe', 'uses'=>'ShowController@postLienhe']
 Route::get('mua-hang/{id}/{tensanpham}', ['as'=>'muahang', 'uses'=>'ShowController@muahang']);
 Route::get('gio-hang', ['as'=>'giohang', 'uses'=>'ShowController@giohang']);
 Route::get('xoa-san-pham/{id}', ['as'=>'xoasanpham', 'uses'=>'ShowController@xoasanpham']);
+Route::get('cap-nhat/{id}/{qty}', ['as'=>'capnhat', 'uses'=>'ShowController@capnhat']);
 //Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'HomeController@loaisanpham']);

@@ -3,6 +3,15 @@ $(document).ready(function () {
 		var rowId = $(this).attr('id');
 		var qty = $(this).parent().parent().find(".qty").val();
 		var _token = $("input[name='_token']").val();
-		alert(_token);
+		$.ajax({
+			url: 'http://localhost/framework/laravel/Laravel_Project/cap-nhat/'+rowId+'/'+qty,
+			type: 'GET',
+			cache: false,
+			data: {"_token":_token,"id":rowId,"qty":qty},
+			success: function(data) {
+				if (data == "oke")
+					window.location = "gio-hang";
+			}
+		});
 	});
 });
