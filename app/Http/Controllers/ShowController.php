@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use DB;
-use Mail;
+use DB, Mail, Cart;
 
 class ShowController extends Controller
 {
@@ -32,5 +31,19 @@ class ShowController extends Controller
             $msg->from('whatthemail2@gmail.com', 'Trinh Danh');
             $msg->to('whatthemail2@gmail.com', 'What The')->subject('Hello World!');
         });
+    }
+    public function muahang($id) {
+        $product_buy = DB::table('products')->where('id', $id)->first();
+        Cart::add(['id'=>$id, 'name'=>$product_buy->name, 'qty'=>1, 'price'=>$product_buy->price, 'options'=> ['img'=>$product_buy->image]]);
+        return redirect()->route('giohang');
+    }
+    public function giohang() {
+        $content = Cart::content()->toArray();
+        $total = Cart::total();
+        return view('user.pages.shopping', compact('content', 'total'));
+    }
+    public function xoasanpham($id) {
+        Cart::remove($id);
+        return redirect()->route('giohang');
     }
 }

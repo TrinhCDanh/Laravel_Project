@@ -60,7 +60,12 @@ Route::group(['middleware' => 'web'], function() {
 
 Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'ShowController@loaisanpham']);
 Route::get('chi-tiet-san-pham/{id}/{tensanpham}', ['as'=>'chitietsanpham', 'uses'=>'ShowController@chitietsanpham']);
+
+// Dang loi
 Route::get('lien-he', ['as'=>'getLienhe', 'uses'=>'ShowController@getLienhe']);
 Route::post('lien-he', ['as'=>'postLienhe', 'uses'=>'ShowController@postLienhe']);
 
+Route::get('mua-hang/{id}/{tensanpham}', ['as'=>'muahang', 'uses'=>'ShowController@muahang']);
+Route::get('gio-hang', ['as'=>'giohang', 'uses'=>'ShowController@giohang']);
+Route::get('xoa-san-pham/{id}', ['as'=>'xoasanpham', 'uses'=>'ShowController@xoasanpham']);
 //Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'HomeController@loaisanpham']);
