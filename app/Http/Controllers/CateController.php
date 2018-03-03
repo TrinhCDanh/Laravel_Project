@@ -45,7 +45,7 @@ class CateController extends Controller
 					</script>
     		<?php
     	}
-    	
+
     }
 
     public function getEdit($id) {

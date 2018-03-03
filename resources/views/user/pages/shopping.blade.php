@@ -90,7 +90,7 @@
             <table class="table table-striped table-bordered ">
               <tr>
                 <td><span class="extra bold totalamout">Total :</span></td>
-                <td><span class="bold totalamout">{!! $total !!}</span></td>
+                <td><span class="bold totalamout">{!! $total - 35  !!}</span></td>
               </tr>
             </table>
             <input type="submit" value="CheckOut" class="btn btn-orange pull-right">
