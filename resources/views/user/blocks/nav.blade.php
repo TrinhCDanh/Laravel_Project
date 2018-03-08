@@ -6,7 +6,7 @@
                 $menu_level_1 = DB::table('cates')->where('parent_id', 0)->get();
             ?>
             @foreach($menu_level_1 as $item_1)
-            <li><a {{--class="active"--}}  href="index.html">{{ $item_1->name }}</a>
+            <li><a>{{ $item_1->name }}</a>
                 <div>
                     <?php
                         $menu_level_2 = DB::table('cates')->where('parent_id', $item_1->id)->get();

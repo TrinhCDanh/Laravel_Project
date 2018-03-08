@@ -13,7 +13,8 @@
 
 Route::get('/', function () {
 	$product = DB::table('products')->select('id', 'name', 'image', 'price', 'alias')->orderBy('id', 'DESC')->skip(0)->take(4)->get();
-    return view('user.pages.home', compact('product'));
+	$product_rd = DB::table('products')->select('id', 'name', 'image', 'price', 'alias')->inRandomOrder()->limit(4)->get();
+    return view('user.pages.home', compact('product', 'product_rd'));
 });
 
 Auth::routes();
@@ -48,9 +49,7 @@ Route::group(['middleware' => 'web'], function() {
 			Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
 			Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
 		});
-		
 	});
-
 });
 
 /*Route::group(['prefix'=>'auth'], function() {
@@ -70,3 +69,9 @@ Route::get('gio-hang', ['as'=>'giohang', 'uses'=>'ShowController@giohang']);
 Route::get('xoa-san-pham/{id}', ['as'=>'xoasanpham', 'uses'=>'ShowController@xoasanpham']);
 Route::get('cap-nhat/{id}/{qty}', ['as'=>'capnhat', 'uses'=>'ShowController@capnhat']);
 //Route::get('loai-san-pham/{id}/{tenloai}', ['as'=>'loaisanpham', 'uses'=>'HomeController@loaisanpham']);
+
+Route::post('tim-kiem', ['as'=>'timkiem', 'uses'=>'ShowController@timkiem']);
+Route::get('checkout', ['as'=>'checkout', 'uses'=>'ShowController@checkout']);
+Route::get('gioi-thieu', ['as'=>'gioithieu', function() {
+	return view('user.pages.about');
+}]);

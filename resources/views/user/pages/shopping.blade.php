@@ -90,10 +90,10 @@
             <table class="table table-striped table-bordered ">
               <tr>
                 <td><span class="extra bold totalamout">Total :</span></td>
-                <td><span class="bold totalamout">{!! $total - 35  !!}</span></td>
+                <td><span class="bold totalamout">{!! $total !!}</span></td>
               </tr>
             </table>
-            <input type="submit" value="CheckOut" class="btn btn-orange pull-right">
+            <a type="submit" href="{{ URL::route('giohang') }}" class="btn btn-orange pull-right">Checkout</a>
             <a href="{!! url('/') !!}" type="submit" class="btn btn-orange pull-right mr10">Continue Shopping</a>
           </div>
         </div>

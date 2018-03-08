@@ -1,7 +1,7 @@
 @extends('user.master')
 @section('description', 'Product Page')
 @section('content')
-  <section id="product">
+  <section id="product" style="margin-top: 20px">
     <div class="container">      
       <!-- Product Details-->
       <div class="row">
@@ -47,7 +47,6 @@
               <div class="productprice">
                 <div class="productpageprice">
                   <span class="spiral"></span>{!! number_format($product_detail->price,0,",",".") !!}</div>
-                <div class="productpageoldprice">Old price : $345.00</div>
                 <ul class="rate">
                   <li class="on"></li>
                   <li class="on"></li>
@@ -56,41 +55,9 @@
                   <li class="off"></li>
                 </ul>
               </div>
-              <div class="quantitybox">
-                <select class="selectsize">
-                  <option>Select Size</option>
-                  <option>Red</option>
-                  <option>Green</option>
-                  <option>Blue</option>
-                  <option>Black</option>
-                </select>
-                <select class="selectqty">
-                  <option>Select</option>
-                  <option>24</option>
-                  <option>36</option>
-                  <option>48</option>
-                </select>
-                <div class="clear"></div>
-                <div class="control-group">
-                  <div class="controls">
-                    <label class="checkbox">
-                      <input type="checkbox" name="optionsCheckboxList2" value="option2">
-                      Option two can also be checked and included in form results </label>
-                    <label class="checkbox">
-                      <input type="checkbox" name="optionsCheckboxList3" value="option3">
-                      Option three can&mdash;yes, you guessed it&mdash;also be checked and included in form results </label>
-                    `
-                    <label class="radio">
-                      <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                      Option one is this and that—be sure to include why it's great </label>
-                    <label class="radio">
-                      <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                      Option two can be something else and selecting it will deselect option one </label>
-                  </div>
-                </div>
-              </div>
+            
               <ul class="productpagecart">
-                <li><a class="cart" href="#">Add to Cart</a>
+                <li><a class="cart" href="{!! url('mua-hang', [$product_detail->id, $product_detail->alias]) !!}">Add to Cart</a>
                 </li>
                 <li><a class="wish" href="#" >Add to Wishlist</a>
                 </li>
@@ -111,15 +78,7 @@
                 </ul>
                 <div class="tab-content">
                   <div class="tab-pane active" id="description">
-                    <h2>h2 tag will be appear</h2>
                     {!! $product_detail->description !!}<br>
-                    <br>
-                    <ul class="listoption3">
-                      <li>Lorem ipsum dolor sit amet Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa Facilisis in pretium nisl aliquet</li>
-                      <li>Nulla volutpat aliquam velit </li>
-                      <li>Faucibus porta lacus fringilla vel Aenean sit amet erat nunc Eget porttitor lorem</li>
-                    </ul>
                   </div>
                   <div class="tab-pane " id="specification">
                     <ul class="productinfo">
@@ -231,7 +190,7 @@
     </div>
   </section>
   <!-- Popular Brands-->
-  <section id="popularbrands" class="container">
+  {{--  <section id="popularbrands" class="container">
     <h1 class="heading1"><span class="maintext">Popular Brands</span><span class="subtext"> See Our  Popular Brands</span></h1>
     <div class="brandcarousalrelative">
       <ul id="brandcarousal">
@@ -252,5 +211,5 @@
       <a id="prev" class="prev" href="#">&lt;</a>
       <a id="next" class="next" href="#">&gt;</a>
     </div>
-  </section>
+  </section>  --}}
 @endsection

@@ -2,7 +2,7 @@
 @section('description', 'Cate Page')
 @section('content')
 
-  <section id="product">
+  <section id="product" style="margin-top: 20px">
     <div class="container">
      <!--  breadcrumb -->  
       <ul class="breadcrumb">
@@ -27,30 +27,7 @@
               
             </ul>
           </div>
-         <!--  Best Seller -->  
-          <div class="sidewidt">
-            <h2 class="heading2"><span>Best Seller</span></h2>
-            <ul class="bestseller">
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Women Accessories</span>
-                <span class="price">$250</span>
-              </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
-              <li>
-                <img width="50" height="50" src="img/prodcut-40x40.jpg" alt="product" title="product">
-                <a class="productname" href="product.html"> Product Name</a>
-                <span class="procategory">Electronics</span>
-                <span class="price">$250</span>
-              </li>
-            </ul>
-          </div>
+         
           <!-- Latest Product -->  
           <div class="sidewidt">
             <h2 class="heading2"><span>Latest Products</span></h2>
@@ -64,21 +41,7 @@
               </li>
               @endforeach
             </ul>
-          </div>
-          <!--  Must have -->  
-          <div class="sidewidt">
-          <h2 class="heading2"><span>Must have</span></h2>
-          <div class="flexslider" id="mainslider">
-            <ul class="slides">
-              <li>
-                <img src="img/product1.jpg" alt="" />
-              </li>
-              <li>
-                <img src="img/product2.jpg" alt="" />
-              </li>
-            </ul>
-          </div>
-          </div>
+          </div> 
         </aside>
         <!-- Sidebar End-->
         <!-- Category-->
@@ -120,17 +83,17 @@
                       <a class="prdocutname" href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}">{!! $item->name !!}</a>
                       <div class="thumbnail">
                         <span class="sale tooltip-test">Sale</span>
-                        <a href="#"><img alt="" src="{!! asset('resources/uploads/'.$item->image) !!}"></a>
+                        <a href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}"><img alt="" src="{!! asset('resources/uploads/'.$item->image) !!}"></a>
                         <div class="shortlinks">
                           <a class="details" href="#">DETAILS</a>
                           <a class="wishlist" href="#">WISHLIST</a>
                           <a class="compare" href="#">COMPARE</a>
                         </div>
                         <div class="pricetag">
-                          <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                          <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">ADD TO CART</a>
                           <div class="price">
                             <div class="pricenew">{{ number_format($item->price,0,",",".") }}</div>
-                            <div class="priceold">$5000.00</div>
+                            <div class="priceold">$00.00</div>
                           </div>
                         </div>
                       </div>
@@ -138,24 +101,22 @@
                     @endforeach
                   </ul>
                   <ul class="thumbnails list row">
+                    @foreach($product_cate as $item)
                     <li>
                       <div class="thumbnail">
                         <div class="row">
                           <div class="col-lg-4 col-sm-4">
                             <span class="offer tooltip-test" >Offer</span>
-                            <a href="#"><img alt="" src="img/product1.jpg"></a>
+                            <a href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}"><img alt="" src="{!! asset('resources/uploads/'.$item->image) !!}"></a>
                           </div>
                           <div class="col-lg-8 col-sm-8">
-                            <a class="prdocutname" href="product.html">Product Name Here</a>
-                            <div class="productdiscrption"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.<br>
-                              <br>
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan </div>
+                            <a class="prdocutname" href="{{ URL('chi-tiet-san-pham', [$item->id, $item->alias]) }}">{!! $item->name !!}</a>
+                          <div class="productdiscrption">{{ $item->description }}</div>
                             <div class="pricetag">
-                              <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
+                              <span class="spiral"></span><a href="{!! url('mua-hang', [$item->id, $item->alias]) !!}" class="productcart">ADD TO CART</a>
                               <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
+                                <div class="pricenew">{{ number_format($item->price,0,",",".") }}</div>
+                                <div class="priceold">$00.00</div>
                               </div>
                             </div>
                             <div class="shortlinks">
@@ -167,64 +128,7 @@
                         </div>
                       </div>
                     </li>
-                    <li>
-                      <div class="thumbnail">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4">
-                            <span class="offer tooltip-test" >Offer</span>
-                            <a href="#"><img alt="" src="img/product1.jpg"></a>
-                          </div>
-                          <div class="col-lg-8 col-sm-8">
-                            <a class="prdocutname" href="product.html">Product Name Here</a>
-                            <div class="productdiscrption"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.<br>
-                              <br>
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan </div>
-                            <div class="pricetag">
-                              <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                              <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
-                              </div>
-                            </div>
-                            <div class="shortlinks">
-                              <a class="details" href="#">DETAILS</a>
-                              <a class="wishlist" href="#">WISHLIST</a>
-                              <a class="compare" href="#">COMPARE</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
-                    <li>
-                      <div class="thumbnail">
-                        <div class="row">
-                          <div class="col-lg-4 col-sm-4">
-                            <span class="offer tooltip-test" >Offer</span>
-                            <a href="#"><img alt="" src="img/product1.jpg"></a>
-                          </div>
-                          <div class="col-lg-8 col-sm-8">
-                            <a class="prdocutname" href="product.html">Product Name Here</a>
-                            <div class="productdiscrption"> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.<br>
-                              <br>
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard.
-                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's stan </div>
-                            <div class="pricetag">
-                              <span class="spiral"></span><a href="#" class="productcart">ADD TO CART</a>
-                              <div class="price">
-                                <div class="pricenew">$4459.00</div>
-                                <div class="priceold">$5000.00</div>
-                              </div>
-                            </div>
-                            <div class="shortlinks">
-                              <a class="details" href="#">DETAILS</a>
-                              <a class="wishlist" href="#">WISHLIST</a>
-                              <a class="compare" href="#">COMPARE</a>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </li>
+                    @endforeach
                   </ul>
                   <div>
                     <ul class="pagination pull-right">
