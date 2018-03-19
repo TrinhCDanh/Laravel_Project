@@ -15,324 +15,14 @@
         <!-- Account Login-->
         <div class="col-lg-9">
           <h1 class="heading1"><span class="maintext">Checkout</span><span class="subtext"> Checkout Process Steps</span></h1>
-          <div class="checkoutsteptitle">Step 1: Checkout Options<a class="modify">Modify</a>
+          <div class="thong-bao">
+            @if (Session::has('flash_message'))
+                <div class="alert alert-{!! Session::get('level_message') !!}">
+                    {!! Session::get('flash_message') !!}
+                </div>
+            @endif
           </div>
-          <div class="checkoutstep ">
-            <section class="newcustomer ">
-              <h3 class="heading3">New Customer </h3>
-              <div class="loginbox">
-                <label class="inline">
-                  <input type="radio" value="option1">
-                  Register Account </label>
-                <br>
-                <label class="inline">
-                  <input type="radio" value="option1">
-                  Guest Checkout </label>
-                <p><br>
-                  By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                <br>
-                <a href="#" class="btn btn-orange">Continue</a>
-              </div>
-            </section>
-            <section class="returncustomer">
-              <h3 class="heading3">Returning Customer </h3>
-              <div class="loginbox">
-                <form class="form-vertical">
-                  <fieldset>
-                    <div class="control-group">
-                      <label class="control-label">E-Mail Address:</label>
-                      <div class="controls">
-                        <input type="text" >
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label">Password:</label>
-                      <div class="controls">
-                        <input type="text">
-                      </div>
-                    </div>
-                    <a class="" href="#">Forgotten Password</a>
-                    <br>
-                    <br>
-                    <a href="#" class="btn btn-orange">Login</a>
-                  </fieldset>
-                </form>
-              </div>
-            </section>
-          </div>
-          <div class="checkoutsteptitle">Step 2: Billing Details<a class="modify">Modify</a>
-          </div>
-          <div class="checkoutstep">
-            <div class="row">
-              <form class="form-horizontal">
-                <fieldset>
-                  <div class="col-lg-6">
-                    <div class="control-group">
-                      <label class="control-label" >First Name<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Last Name<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >E-Mail<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Telephone<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Fax</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Telephone<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Password<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Password Confirm<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="control-group">
-                      <label class="control-label" >Company</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Company Id</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Address 1<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Address 2</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >City<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Post Code<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Country<span class="red">*</span></label>
-                      <div class="controls">
-                        <select >
-                          <option>Please Select</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Region / State<span class="red">*</span></label>
-                      <div class="controls">
-                        <select >
-                          <option>Please Select</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-            <a class="btn btn-orange pull-right">Continue</a>
-          </div>
-          <div class="checkoutsteptitle">Step 3: Delivery Details<a class="modify">Modify</a>
-          </div>
-          <div class="checkoutstep">
-            <div class="row">
-              <form class="form-horizontal">
-                <fieldset>
-                  <div class="col-lg-6">
-                    <div class="control-group">
-                      <label class="control-label" >First Name<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Last Name<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >E-Mail<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Telephone<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Fax</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Telephone<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Password<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Password Confirm<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6">
-                    <div class="control-group">
-                      <label class="control-label" >Company</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Company Id</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Address 1<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Address 2</label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >City<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Post Code<span class="red">*</span></label>
-                      <div class="controls">
-                        <input type="text" class=""  value="">
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Country<span class="red">*</span></label>
-                      <div class="controls">
-                        <select >
-                          <option>Please Select</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="control-group">
-                      <label class="control-label" >Region / State<span class="red">*</span></label>
-                      <div class="controls">
-                        <select >
-                          <option>Please Select</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-            <a class="btn btn-orange pull-right">Continue</a>
-          </div>
-          <div class="checkoutsteptitle">Step 4: Delivery Method<a class="modify">Modify</a>
-          </div>
-          <div class="checkoutstep">
-            <p>Please select the preferred shipping method to use on this order..</p>
-            <label class="inline">
-              <input type="radio"  value="option1">
-              Flat Shipping Rate</label>
-            <textarea rows="3" >Add Comment here...</textarea>
-            <br>
-            <a class="btn btn-orange pull-right">Continue</a>
-          </div>
-          <div class="checkoutsteptitle">Step 5: Payment  Method<a class="modify">Modify</a>
-          </div>
-          <div class="checkoutstep">
-            <p>Please select the preferred payment method to use on this order.</p>
-            <label class=" inline">
-              <input type="radio" value="option1">
-              Cash On Delivery</label>
-            <textarea rows="3" >Add Comment here...</textarea>
-            <br>
-            <div class="pull-right">
-              <a class="btn btn-orange pull-right">Continue</a>
-              <div class="privacy">I have read and agree to the <a href="#">Privacy Policy</a>
-              </div>
-            </div>
-          </div>
-          <div class="checkoutsteptitle">Step 6: Confirm Order<a class="modify">Modify</a>
+          <div class="checkoutsteptitle">Step 1: Confirm Order<a class="modify">Modify</a>
           </div>
           <div class="checkoutstep">
             <div class="cart-info">
@@ -340,8 +30,8 @@
                 <tr>
                   <th class="image">Image</th>
                   <th class="name">Product Name</th>
-                  <th class="model">Model</th>
                   <th class="quantity">Quantity</th>
+                  <th class="action">Action</th>
                   <th class="price">Unit Price</th>
                   <th class="total">Total</th>
                 </tr>
@@ -387,12 +77,81 @@
                       </tr>
                     </tbody>
                   </table>
-                  <input type="submit" class="btn btn-orange pull-right" value="CheckOut">
-                  <input type="submit" class="btn btn-orange pull-right mr10" value="Continue Shopping">
+                <a href="{{ url('/') }}" type="submit" class="btn btn-orange pull-right mr10">Continue Shopping</a>
                 </div>
               
             </div>
           </div>
+          <div class="checkoutsteptitle">Step 2: Delivery Details<a class="modify">Modify</a>
+          </div>
+          <div class="checkoutstep">
+            <div class="row">
+              <form class="form-horizontal" action="{!! route('muahang') !!}" method="POST">
+                <input type="hidden" name="_token" value="{!! csrf_token() !!}" >
+                <fieldset>
+                  <div class="col-lg-6">
+                    <div class="control-group">
+                      <label class="control-label" >Name<span class="red">*</span></label>
+                      <div class="controls">
+                        <input type="text" value="" name="txtName" required>
+                      </div>
+                    </div>
+                    <div class="control-group" style="margin: 15px 0">
+                      <label class="control-label">Gender<span class="red">*</span></label>
+                      <div class="controls">
+                        <label class="radio-inline">
+                            <input name="rdoGender" value="0" checked="" type="radio">Female
+                        </label>
+                        <label class="radio-inline">
+                            <input name="rdoGender" value="1" type="radio">Male
+                        </label>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" >E-Mail<span class="red">*</span></label>
+                      <div class="controls">
+                        <input type="email" value="" name="txtEmail" required>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" >Address<span class="red">*</span></label>
+                      <div class="controls">
+                        <input type="text" value="" name="txtAddress" required>
+                      </div>
+                    </div>
+                    <div class="control-group">
+                      <label class="control-label" >Telephone<span class="red">*</span></label>
+                      <div class="controls">
+                        <input type="text" value="" name="txtPhone" required>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="control-group">
+                      <label class="control-label" >Note</label>
+                      <div class="controls">
+                        <textarea name="txtNote" id="" cols="30" rows="10"></textarea>
+                      </div>
+                    </div>
+                    <div class="control-group" style="margin: 15px 0">
+                      <label class="control-label">Payment<span class="red">*</span></label>
+                      <div class="controls">
+                        <label class="radio-inline">
+                            <input name="rdoGender" value="0" checked="" type="radio">COD
+                        </label>
+                        <label class="radio-inline">
+                            <input name="rdoGender" value="1" type="radio">Money
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <button type="submit" class="btn btn-orange pull-right">Continue</button>
+              </form>
+            </div>
+            
+          </div>
+         
         </div>        
         <!-- Sidebar Start-->
         <div class="col-lg-3">
@@ -401,19 +160,10 @@
               <h2 class="heading2"><span> Checkout Steps</span></h2>
               <ul class="nav nav-list categories">
                 <li>
-                  <a class="active" href="#">Checkout Options</a>
-                </li>
-                <li>
-                  <a href="#">Billing Details</a>
+                  <a href="#">Confirm Order</a>
                 </li>
                 <li>
                   <a href="#">Delivery Details</a>
-                </li>
-                <li>
-                  <a href="#">Delivery Method</a>
-                </li>                
-                <li>
-                  <a href="#"> Payment Method</a>
                 </li>
               </ul>
             </div>

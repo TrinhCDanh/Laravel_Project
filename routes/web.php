@@ -49,6 +49,11 @@ Route::group(['middleware' => 'web'], function() {
 			Route::get('edit/{id}', ['as'=>'admin.user.getEdit', 'uses'=>'UserController@getEdit']);
 			Route::post('edit/{id}', ['as'=>'admin.user.postEdit', 'uses'=>'UserController@postEdit']);
 		});
+		Route::group(['prefix'=>'bill'], function() {
+			Route::get('list', ['as'=>'admin.bill.list', 'uses'=>'BillController@getList']);
+			Route::get('view/{id}', ['as'=>'admin.bill.getView', 'uses'=>'BillController@getView']);
+			Route::get('check-order/{id}', ['as'=>'admin.bill.checkorder', 'uses'=>'BillController@checkOrder']);
+		});
 	});
 });
 
@@ -75,3 +80,26 @@ Route::get('checkout', ['as'=>'checkout', 'uses'=>'ShowController@checkout']);
 Route::get('gioi-thieu', ['as'=>'gioithieu', function() {
 	return view('user.pages.about');
 }]);
+
+Route::post('mua-hang', ['as'=>'muahang', 'uses'=>'BillController@saveBill']);
+
+// Route::get('test-cart', function() {
+// 	if(Session('cart')) {
+// 		echo "Hello";
+// 		$content = Cart::content()->toArray();
+// 		echo "<pre>";
+// 		print_r($content);
+// 		echo "<pre>";
+// 		foreach($content as $value) {
+// 			print_r($value);
+// 			echo $value['id'];
+// 			echo $value['name'];
+// 			echo $value['qty'];
+// 			echo $value['subtotal'];
+// 		}
+// 	}		
+// });
+
+// Route::get('remove-cart', function() {
+// 	Session::forget('cart');		
+// });

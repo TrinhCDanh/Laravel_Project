@@ -22,4 +22,8 @@ class Product extends Model
     public function pimages() {
     	return $this->hasMany('App\ProductImages');
     }
+
+    public function bill_detail() {
+    	return $this->hasMany('App\BillDetail');
+    }
 }

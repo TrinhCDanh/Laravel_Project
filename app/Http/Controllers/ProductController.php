@@ -80,13 +80,13 @@ class ProductController extends Controller
     public function postEdit($id, Request $request) {
     	$product = Product::find($id);
 
-    	$product->name 				= Request::input('txtName');
-    	$product->alias 			= changeTitle(Request::input('txtName'));
-    	$product->price 			= Request::input('txtPrice');
-    	$product->intro 			= Request::input('txtIntro');
+    	$product->name 			= Request::input('txtName');
+    	$product->alias 		= changeTitle(Request::input('txtName'));
+    	$product->price 		= Request::input('txtPrice');
+    	$product->intro 		= Request::input('txtIntro');
     	$product->content 		= Request::input('txtContent');
     	$product->keywords 		= Request::input('txtKeywords');
-    	$product->description = Request::input('txtDescription');
+    	$product->description 	= Request::input('txtDescription');
     	$product->user_id 		= 1;
     	$product->cate_id 		= Request::input('sltParent');
     	//Cap nhat file hinh
